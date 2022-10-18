@@ -85,23 +85,23 @@ const Video = (props) => {
         // const timeout = setTimeout(() => setIsLoading(false), 400);
         // return () => clearTimeout(timeout);
     },
-    //  [cardId, navigate]
-     );
+        //  [cardId, navigate]
+    );
 
     useEffect(() => {
         const getHighlight = async () => {
             // const { data } = await highlightApis.getHighlight(cardId);
 
             // const filteredLike = [data.topOne, data.topTwo, data.topThree]
-                // .filter((time) => time >= 0)
-                // .map((item) => (item === 0 ? 3 : item));
+            // .filter((time) => time >= 0)
+            // .map((item) => (item === 0 ? 3 : item));
 
             const newLike = [];
             // filteredLike.map((time) =>
-                // newLike.push({
-                    // time,
-                    // display: format(time),
-                // })
+            // newLike.push({
+            // time,
+            // display: format(time),
+            // })
             // );
             setLikes((prev) => ({
                 likeTime: newLike,
@@ -143,8 +143,8 @@ const Video = (props) => {
                 // const { data } = await highlightApis.addHighlight(likeData);
 
                 // const filteredLike = [data.topOne, data.topTwo, data.topThree]
-                    // .filter((time) => time >= 0)
-                    // .map((time) => (time === 0 ? 2 : time));
+                // .filter((time) => time >= 0)
+                // .map((time) => (time === 0 ? 2 : time));
 
                 const newLike = [];
                 // filteredLike.map((time) =>
@@ -170,8 +170,8 @@ const Video = (props) => {
         }, 6000);
 
         return () => clearInterval(intervalPost);
-    }, 
-    // [cardId, token]
+    },
+        // [cardId, token]
     );
 
     const cleanLike = useRef((id) => {
@@ -310,14 +310,14 @@ const Video = (props) => {
                 </VideoBackgroud>
             ) : (
                 <> */}
-                    <VideoBackgroud>
-                        <div
-                            ref={videoControllerRef}
-                            className="player-wrapper"
-                            // onMouseMove={mouseMoveHandler}
-                            // onMouseLeave={mouseLeaveHandler}
-                        >
-                            {/* {video === null ? (
+            <VideoBackgroud>
+                <div
+                    ref={videoControllerRef}
+                    className="player-wrapper"
+                // onMouseMove={mouseMoveHandler}
+                // onMouseLeave={mouseLeaveHandler}
+                >
+                    {/* {video === null ? (
                                 <img
                                     src={convertingImg}
                                     className="converting_img"
@@ -325,46 +325,48 @@ const Video = (props) => {
                                 ></img>
                             ) : (
                                 <> */}
-                                    <ReactPlayer
-                                        ref={videoRef}
-                                        // url={video}
-                                        url={"https://chinatan.smilecast.co.kr/video/us-alliance/us-alliance_master_interview.mp4"}
-                                        playing={playing}
-                                        controls={false}
-                                        muted={muted}
-                                        volume={volume}
-                                        playbackRate={playbackRate}
-                                        onProgress={progressHandler}
-                                        width="100%"
-                                        height="100%"
-                                    />
-                                    <VideoControl
-                                        ref={controlsRef}
-                                        onPlayPause={playPauseHandler}
-                                        playing={playing}
-                                        onRewind={rewindHandler}
-                                        onForward={forwardHandler}
-                                        onSeekMouseDown={seekMouseDownHandler}
-                                        onSeekMouseUp={seekMouseUpHandler}
-                                        muted={muted}
-                                        // onMute={muteHandler}
-                                        // onVolumeChange={volumeChangeHandler}
-                                        // onVolumeSeekUp={volumeSeekUpHandler}
-                                        volume={volume}
-                                        playbackRate={playbackRate}
-                                        onPlaybackRateChange={playBackChangeHandler}
-                                        onToggleFullScreen={toggleFullScreenHandler}
-                                        played={played}
-                                        onSeek={onSeekChangeHandler}
-                                        elapsedTime={elapsedTime}
-                                        totalDuration={totalDuration}
-                                        onChangeDisplayFormat={displayFormatHandler}
-                                        cardId={cardId}
-                                        scrapHandler={scrapHandler}
-                                        isScrapped={isScrapped}
-                                        openModalHandler={openModalHandler}
-                                    />
-                                    {/* <div
+                    <div className="react-player">
+                        <ReactPlayer
+                            ref={videoRef}
+                            // url={video}
+                            url={" https://chinatan.smilecast.co.kr/video/us-alliance/us-alliance_master_interview.mp4"}
+                            playing={playing}
+                            controls={false}
+                            muted={muted}
+                            volume={volume}
+                            playbackRate={playbackRate}
+                            onProgress={progressHandler}
+                            width="100%"
+                            height="100%"
+                        />
+                    </div>
+                    <VideoControl
+                        ref={controlsRef}
+                        onPlayPause={playPauseHandler}
+                        playing={playing}
+                        onRewind={rewindHandler}
+                        onForward={forwardHandler}
+                        onSeekMouseDown={seekMouseDownHandler}
+                        onSeekMouseUp={seekMouseUpHandler}
+                        muted={muted}
+                        // onMute={muteHandler}
+                        // onVolumeChange={volumeChangeHandler}
+                        // onVolumeSeekUp={volumeSeekUpHandler}
+                        volume={volume}
+                        playbackRate={playbackRate}
+                        onPlaybackRateChange={playBackChangeHandler}
+                        onToggleFullScreen={toggleFullScreenHandler}
+                        played={played}
+                        onSeek={onSeekChangeHandler}
+                        elapsedTime={elapsedTime}
+                        totalDuration={totalDuration}
+                        onChangeDisplayFormat={displayFormatHandler}
+                        cardId={cardId}
+                        scrapHandler={scrapHandler}
+                        isScrapped={isScrapped}
+                        openModalHandler={openModalHandler}
+                    />
+                    {/* <div
                                         style={{
                                             zIndex: 1000,
                                             position: "absolute",
@@ -388,11 +390,11 @@ const Video = (props) => {
                                             />
                                         ))}
                                     </div> */}
-                                {/* </>
+                    {/* </>
                             )} */}
-                        </div>
-                    </VideoBackgroud>
-                    {/* {video !== null && (
+                </div>
+            </VideoBackgroud>
+            {/* {video !== null && (
                         <HightLight>
                             <div className="highlight_bar">
                                 <div className="contents_box">
@@ -440,7 +442,7 @@ const Video = (props) => {
                             </div>
                         </HightLight>
                     )} */}
-                {/* </>
+            {/* </>
             )} */}
         </Container>
     );
@@ -461,12 +463,16 @@ const Container = styled.div`
 
 const VideoBackgroud = styled.div`
   width: 100%;
-  background: #f4f6f9;
+  /* background: #f4f6f9; */
+  /* display: flex; */
   .player-wrapper {
+    /* border: 1px solid red; */
     position: relative;
-    max-width: 750px;
+    max-width: 1000px;
     width: 100%;
     margin: 0 auto;
+    padding: 35px;
+    background-color: black;
     .converting_img {
       width: 100%;
       -webkit-user-drag: none;
@@ -474,7 +480,7 @@ const VideoBackgroud = styled.div`
   }
   .tooltip {
     position: absolute;
-    right: 50px;
+    /* right: 50px; */
     display: none;
     width: 200px;
     background: rgba(255, 255, 255, 0.9);

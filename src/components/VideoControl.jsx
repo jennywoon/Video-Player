@@ -13,6 +13,10 @@ import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { BiFullscreen } from "react-icons/bi";
 import { MdFastRewind, MdFastForward } from "react-icons/md";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
+import RotateRightIcon from '@mui/icons-material/RotateRight';
+import RotateLeftIcon from '@mui/icons-material/RotateLeft';
+import PauseCircleIcon from '@mui/icons-material/PauseCircle';
+import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 
 const PrettoSlider = styled(Slider)({});
 
@@ -87,25 +91,39 @@ const VideoControl = forwardRef(
 
                     {/* body */}
                     <div className="body">
-                        <button onClick={onRewind}>
-                            <RewindIcon />
-                        </button>
-                        <button onClick={onPlayPause}>
+                        <div onClick={onRewind}>
+                            <RotateLeftIcon
+                                sx={{ color: "white", fontSize: 60 }}
+                            />
+                        </div>
+                        <div onClick={onPlayPause}>
                             {!playing ? (
-                                <PlayIcon className="play_icon" onClick={onPlayPause} />
+                                <PlayCircleFilledWhiteIcon className="play_icon" onClick={onPlayPause}
+                                    sx={{ color: "white", fontSize: 90 }}
+                                />
                             ) : (
-                                <PauseIcon className="play_icon" onClick={onPlayPause} />
+                                <PauseCircleIcon className="play_icon" onClick={onPlayPause}
+                                    sx={{ color: "white", fontSize: 90 }}
+                                />
                             )}
-                        </button>
-                        <button onClick={onForward}>
-                            <ForwardIcon />
-                        </button>
+                        </div>
+                        <div onClick={onForward}>
+                            <RotateRightIcon
+                                sx={{ color: "white", fontSize: 60 }}
+                            />
+                        </div>
                     </div>
 
                     {/* footer */}
                     <div className="footer">
                         <div className="play_control_box">
                             <div className="slider">
+                                <div
+                                    className="video_time"
+                                // onClick={onChangeDisplayFormat}
+                                >
+                                    {elapsedTime}
+                                </div>
                                 <PrettoSlider
                                     valueLabelDisplay="auto"
                                     min={0}
@@ -118,24 +136,25 @@ const VideoControl = forwardRef(
                                     valueLabelFormat={valueLabelFormat}
                                     sx={{
                                         color: "#17a23a",
-                                        height: 4,
+                                        height: 8,
                                         "& .MuiSlider-thumb": {
-                                            width: 8,
-                                            height: 8,
+                                            width: 22,
+                                            height: 22,
 
                                             "&:before": {
-                                                boxShadow: "0 2px 12px 0 rgba(0,0,0,0.4)",
+                                                // boxShadow: "0 2px 12px 0 rgba(0,0,0,0.4)",
                                             },
                                             "&:hover, &.Mui-focusVisible": {
-                                                boxShadow: `0px 0px 0px 8px rgb(0 0 0 / 16%)`,
+                                                // boxShadow: `0px 0px 0px 8px rgb(0 0 0 / 16%)`,
                                             },
                                             "&.Mui-active": {
-                                                width: 20,
-                                                height: 20,
+                                                width: 22,
+                                                height: 22,
                                             },
                                         },
                                         "& .MuiSlider-rail": {
-                                            opacity: 0.28,
+                                            opacity: 0.8,
+                                            color: "#eee"
                                         },
                                         "& .MuiSlider-valueLabel": {
                                             lineHeight: 1.2,
@@ -160,6 +179,52 @@ const VideoControl = forwardRef(
                                         },
                                     }}
                                 />
+                                <div
+                                    className="video_time"
+                                // onClick={onChangeDisplayFormat}
+                                >
+                                    {totalDuration}
+                                </div>
+                                <div onClick={handlePopover} className="speed">
+                                    <div>{playbackRate}X</div>
+                                </div>
+                                <Popover
+                                    id={open ? "playbackrate-popover" : undefined}
+                                    open={open}
+                                    onClose={handleClose}
+                                    anchorEl={anchorEl}
+                                    anchorOrigin={{
+                                        vertical: "top",
+                                        horizontal: "left",
+                                    }}
+                                    transformOrigin={{
+                                        vertical: "bottom",
+                                        horizontal: "left",
+                                    }}
+                                >
+                                    <StSpeedMap>
+                                        {[0.5, 0.75, 1, 1.25, 1.5, 2].map((rate) => (
+                                            <div
+                                                className="speed_box"
+                                                key={rate}
+                                                onClick={() => setOpen(false)}
+                                            >
+                                                <div
+                                                    onClick={() => onPlaybackRateChange(rate)}
+                                                    className="speed_btn"
+                                                // style={{
+                                                //     color: rate === playbackRate ? "#EA617A" : "",
+                                                // }}
+                                                >
+                                                    <div>{rate}X</div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </StSpeedMap>
+                                </Popover>
+                                <div className="fullscreen" onClick={onToggleFullScreen}>
+                                    <BiFullscreen />
+                                </div>
                             </div>
                             <div className="functions_box">
                                 <div className="basic_box">
@@ -213,19 +278,19 @@ const VideoControl = forwardRef(
                                             }}
                                         />
                                     </div> */}
-                                    <button
+                                    {/* <button
                                         className="video_time"
                                         onClick={onChangeDisplayFormat}
                                     >
                                         {elapsedTime}/{totalDuration}
-                                    </button>
+                                    </button> */}
                                 </div>
 
                                 <div className="sub_box">
-                                    <button onClick={handlePopover} className="speed">
+                                    {/* <button onClick={handlePopover} className="speed">
                                         <h1>{playbackRate}X</h1>
-                                    </button>
-                                    <Popover
+                                    </button> */}
+                                    {/* <Popover
                                         id={open ? "playbackrate-popover" : undefined}
                                         open={open}
                                         onClose={handleClose}
@@ -256,11 +321,10 @@ const VideoControl = forwardRef(
                                                 </button>
                                             </div>
                                         ))}
-                                    </Popover>
-
-                                    <button className="fullscreen" onClick={onToggleFullScreen}>
+                                    </Popover> */}
+                                    {/* <button className="fullscreen" onClick={onToggleFullScreen}>
                                         <BiFullscreen />
-                                    </button>
+                                    </button> */}
                                 </div>
                             </div>
                         </div>
@@ -281,6 +345,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   z-index: 1;
+  /* border: 1px solid red; */
   &:hover {
     background: rgba(0, 0, 0, 0.3);
   }
@@ -289,9 +354,10 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 16px;
+    /* padding: 16px; */
     width: 100%;
     height: 100%;
+    /* border: 1px solid blue; */
     .header {
       width: 100%;
       display: flex;
@@ -327,7 +393,9 @@ const Container = styled.div`
       width: 60%;
       display: flex;
       justify-content: space-around;
-      button {
+      align-items: center;
+      /* border: 1px solid red; */
+      /* button {
         font-size: 40px;
         color: #777;
         transform: scale(0.9);
@@ -336,7 +404,7 @@ const Container = styled.div`
           transform: scale(1);
           transition: all 0.2s ease-in-out;
         }
-      }
+      } */
     }
     .footer {
       width: 100%;
@@ -346,8 +414,34 @@ const Container = styled.div`
       padding: 0px;
       .play_control_box {
         width: 100%;
+        display: flex;
+        align-items: center;
+        /* border: 1px solid white; */
         .slider {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            gap: 20px;
+            margin: 0 20px;
+            /* border: 1px solid red; */
+            .video_time {
+            color: white;
+            margin: 10px;
+            }
+            .speed {
+            color: white;
+            cursor: pointer;
+            }
+            .fullscreen {
+            font-size: 22px;
+            color: white;
+            /* border: 1px solid red; */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            }
         }
+        
       }
       .functions_box {
         display: flex;
@@ -384,21 +478,14 @@ const Container = styled.div`
               width: 100%;
             }
           }
-          .video_time {
-            color: white;
-            margin-left: 16px;
-          }
         }
         .sub_box {
           flex-grow: 3;
           display: flex;
           justify-content: flex-end;
-          .speed {
-            color: white;
-          }
-          .speed_box {
+          /* .speed_box {
             display: flex;
-            flex-direction: colum;
+            flex-direction: column;
             .speed_btn {
               background: white;
               width: 50px;
@@ -410,16 +497,23 @@ const Container = styled.div`
                 color: white;
               }
             }
-          }
-          .fullscreen {
-            font-size: 18px;
-            color: white;
-          }
+          } */
         }
       }
     }
   }
 `;
+
+const StSpeedMap = styled.div`
+    font-weight: 500;
+    font-size: 15px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    flex-grow: 3;
+`
 
 const ScrapIcon = styled(BsFillBookmarkFill)`
   font-size: 16px;
