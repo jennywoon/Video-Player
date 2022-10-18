@@ -12,7 +12,7 @@ import { BsFillBookmarkFill } from "react-icons/bs";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { BiFullscreen } from "react-icons/bi";
 import { MdFastRewind, MdFastForward } from "react-icons/md";
-import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
+// import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import RotateRightIcon from '@mui/icons-material/RotateRight';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import PauseCircleIcon from '@mui/icons-material/PauseCircle';
