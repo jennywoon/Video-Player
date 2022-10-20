@@ -7,19 +7,14 @@ import ReactPlayer from "react-player";
 import screenfull from "screenfull";
 
 import VideoControl from "./VideoControl.jsx";
-import Bubble from "./Bubble.jsx";
-
-// import feedbackApis from "../../apis/feedbackApis.js";
-// import highlightApis from "../../apis/highlightApis.js";
-
 // import LoadingLoader from "../UI/LoadingLoader.jsx";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 // import questionMark from "../../assets/questionMark.svg";
 // import convertingImg from "../../assets/convertingImage.svg";
 // import GlobalModal from "../UI/GlobalModal";
 // import { boxShadow } from "../../styles/boxShadow.js";
-import { MdFavorite } from "react-icons/md";
-import { IoAlertCircle } from "react-icons/io5";
+// import { MdFavorite } from "react-icons/md";
+// import { IoAlertCircle } from "react-icons/io5";
 
 function format(seconds) {
     if (isNaN(seconds)) {
@@ -329,7 +324,7 @@ const Video = (props) => {
                         <ReactPlayer
                             ref={videoRef}
                             // url={video}
-                            url={" https://chinatan.smilecast.co.kr/video/us-alliance/us-alliance_master_interview.mp4"}
+                            url={"https://chinatan.smilecast.co.kr/video/us-alliance/us-alliance_master_interview.mp4"}
                             playing={playing}
                             controls={false}
                             muted={muted}
@@ -448,22 +443,21 @@ const Video = (props) => {
     );
 };
 
-const AlertIcon = styled(IoAlertCircle)`
-  font-size: 24px;
-  color: #ec5959;
-`;
+// const AlertIcon = styled(IoAlertCircle)`
+//   font-size: 24px;
+//   color: #ec5959;
+// `;
 
 const Container = styled.div`
   position: relative;
   width: 100%;
-  margin: auto;
-  margin-bottom: 40px;
-  box-sizing: border-box;
+  /* margin: auto; */
+  /* margin-bottom: 40px; */
+  /* box-sizing: border-box; */
 `;
 
 const VideoBackgroud = styled.div`
   width: 100%;
-  /* background: #f4f6f9; */
   /* display: flex; */
   .player-wrapper {
     /* border: 1px solid red; */
@@ -471,16 +465,16 @@ const VideoBackgroud = styled.div`
     max-width: 1000px;
     width: 100%;
     margin: 0 auto;
-    padding: 35px;
+    padding: 40px;
     background-color: black;
-    .converting_img {
+    /* .converting_img {
       width: 100%;
       -webkit-user-drag: none;
-    }
+    } */
   }
-  .tooltip {
+  /* .tooltip {
     position: absolute;
-    /* right: 50px; */
+    right: 50px;
     display: none;
     width: 200px;
     background: rgba(255, 255, 255, 0.9);
@@ -489,8 +483,8 @@ const VideoBackgroud = styled.div`
 
     :after {
     }
-  }
-  .like_btn {
+  } */
+  /* .like_btn {
     display: flex;
     &:hover {
       color: black;
@@ -498,115 +492,115 @@ const VideoBackgroud = styled.div`
         display: block;
       }
     }
-  }
+  } */
 `;
 
-const HightLight = styled.div`
-  ${({ theme }) => {
-        const { colors, fontSize, device } = theme;
-        return css`
-      max-width: 100%;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      height: 72px;
+// const HightLight = styled.div`
+//   ${({ theme }) => {
+//         const { colors, fontSize, device } = theme;
+//         return css`
+//       max-width: 100%;
+//       display: flex;
+//       justify-content: space-around;
+//       align-items: center;
+//       height: 72px;
 
-      width: 100%;
-      margin: 0 auto;
-      h2 {
-        font-size: 16px;
-      }
-      .highlight_bar {
-        width: 90%;
-        .contents_box {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          .title {
-            white-space: nowrap;
-            .tooltip_highlight {
-              position: absolute;
-              display: none;
-              margin: 10px 0 0 20px;
-              width: 300px;
-              font-size: 14px;
-              background: rgba(0, 0, 0, 0.3);
-              padding: 12px 10px;
-              border-radius: 10px;
-              line-height: 16px;
-              :after {
-              }
-            }
-            span {
-              :first-child {
-                cursor: pointer;
-                img {
-                  display: inline-block;
-                  vertical-align: middle;
-                  margin-bottom: 2px;
-                }
-                &:hover {
-                  .tooltip_highlight {
-                    display: block;
-                  }
-                }
-              }
-              margin-right: 16px;
-              .line {
-                width: 1px;
-              }
-            }
-          }
-        }
-        .noti {
-          font-size: 12px;
-        }
-        .timestamp_box {
-          display: flex;
-          justify-content: center;
-          max-width: 275px;
-          height: 40px;
-          gap: 16px;
-          button {
-            text-decoration: underline;
-            background: rgba(234, 97, 122, 0.06);
-            padding: 10px 20px;
-            border-radius: 4px;
-            margin-right: 10px;
-          }
-          .timestamp {
-            background: rgba(234, 97, 122, 0.06);
-            padding: 10px 20px;
-            cursor: pointer;
-            div {
-              text-decoration: underline;
-            }
-          }
-        }
-      }
-    `;
-    }}
-`;
+//       width: 100%;
+//       margin: 0 auto;
+//       h2 {
+//         font-size: 16px;
+//       }
+//       .highlight_bar {
+//         width: 90%;
+//         .contents_box {
+//           display: flex;
+//           justify-content: center;
+//           align-items: center;
+//           .title {
+//             white-space: nowrap;
+//             .tooltip_highlight {
+//               position: absolute;
+//               display: none;
+//               margin: 10px 0 0 20px;
+//               width: 300px;
+//               font-size: 14px;
+//               background: rgba(0, 0, 0, 0.3);
+//               padding: 12px 10px;
+//               border-radius: 10px;
+//               line-height: 16px;
+//               :after {
+//               }
+//             }
+//             span {
+//               :first-child {
+//                 cursor: pointer;
+//                 img {
+//                   display: inline-block;
+//                   vertical-align: middle;
+//                   margin-bottom: 2px;
+//                 }
+//                 &:hover {
+//                   .tooltip_highlight {
+//                     display: block;
+//                   }
+//                 }
+//               }
+//               margin-right: 16px;
+//               .line {
+//                 width: 1px;
+//               }
+//             }
+//           }
+//         }
+//         .noti {
+//           font-size: 12px;
+//         }
+//         .timestamp_box {
+//           display: flex;
+//           justify-content: center;
+//           max-width: 275px;
+//           height: 40px;
+//           gap: 16px;
+//           button {
+//             text-decoration: underline;
+//             background: rgba(234, 97, 122, 0.06);
+//             padding: 10px 20px;
+//             border-radius: 4px;
+//             margin-right: 10px;
+//           }
+//           .timestamp {
+//             background: rgba(234, 97, 122, 0.06);
+//             padding: 10px 20px;
+//             cursor: pointer;
+//             div {
+//               text-decoration: underline;
+//             }
+//           }
+//         }
+//       }
+//     `;
+//     }}
+// `;
 
-const LikeIcon = styled(MdFavorite)`
-  font-size: 20px;
-  color: white;
-  &:hover {
-    color: ${({ theme }) => theme.colors.pink};
-  }
-  animation: pulse 1s infinite;
-  @keyframes pulse {
-    0% {
-      transform: scale(1.04);
-      box-shadow: 0;
-    }
-    80% {
-      transform: scale(0.9);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-`;
+// const LikeIcon = styled(MdFavorite)`
+//   font-size: 20px;
+//   color: white;
+//   &:hover {
+//     color: ${({ theme }) => theme.colors.pink};
+//   }
+//   animation: pulse 1s infinite;
+//   @keyframes pulse {
+//     0% {
+//       transform: scale(1.04);
+//       box-shadow: 0;
+//     }
+//     80% {
+//       transform: scale(0.9);
+//     }
+//     100% {
+//       transform: scale(1);
+//     }
+//   }
+// `;
 
 export default Video;

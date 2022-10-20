@@ -75,14 +75,14 @@ const VideoControl = forwardRef(
                     {/* header */}
                     <div className="header">
                         <div className="logo">
-                            {/* <img alt="logo" src={logo} /> */}
+                            VOD
                         </div>
                         {/* <button
                             style={{
-                                color: isScrapped ? theme.colors.main : "#fff",
+                                // color: isScrapped ? theme.colors.main : "#fff",
                             }}
                             className="scrap_btn"
-                            onClick={token ? scrapHandler : openModalHandler}
+                            // onClick={token ? scrapHandler : openModalHandler}
                         >
                             <ScrapIcon />
                             <div className="tooltip">좋았던 면접 영상을 저장하세요!</div>
@@ -156,27 +156,27 @@ const VideoControl = forwardRef(
                                             opacity: 0.8,
                                             color: "#eee"
                                         },
-                                        "& .MuiSlider-valueLabel": {
-                                            lineHeight: 1.2,
-                                            fontSize: 12,
-                                            background: "unset",
-                                            padding: 0,
-                                            width: 32,
-                                            height: 32,
-                                            borderRadius: "50% 50% 50% 0",
-                                            backgroundColor: "#567FE8",
-                                            transformOrigin: "bottom left",
-                                            transform:
-                                                "translate(50%, -100%) rotate(-45deg) scale(0)",
-                                            "&:before": { display: "none" },
-                                            "&.MuiSlider-valueLabelOpen": {
-                                                transform:
-                                                    "translate(50%, -100%) rotate(-45deg) scale(1)",
-                                            },
-                                            "& > *": {
-                                                transform: "rotate(45deg)",
-                                            },
-                                        },
+                                        // "& .MuiSlider-valueLabel": {
+                                        //     lineHeight: 1.2,
+                                        //     fontSize: 12,
+                                        //     background: "unset",
+                                        //     padding: 0,
+                                        //     width: 32,
+                                        //     height: 32,
+                                        //     borderRadius: "50% 50% 50% 0",
+                                        //     backgroundColor: "#567FE8",
+                                        //     transformOrigin: "bottom left",
+                                        //     transform:
+                                        //         "translate(50%, -100%) rotate(-45deg) scale(0)",
+                                        //     "&:before": { display: "none" },
+                                        //     "&.MuiSlider-valueLabelOpen": {
+                                        //         transform:
+                                        //             "translate(50%, -100%) rotate(-45deg) scale(1)",
+                                        //     },
+                                        //     "& > *": {
+                                        //         transform: "rotate(45deg)",
+                                        //     },
+                                        // },
                                     }}
                                 />
                                 <div
@@ -346,9 +346,9 @@ const Container = styled.div`
   justify-content: space-between;
   z-index: 1;
   /* border: 1px solid red; */
-  &:hover {
+  /* &:hover {
     background: rgba(0, 0, 0, 0.3);
-  }
+  } */
   & .control_box {
     display: flex;
     flex-direction: column;
@@ -359,9 +359,22 @@ const Container = styled.div`
     height: 100%;
     /* border: 1px solid blue; */
     .header {
-      width: 100%;
+      width: 96%;
       display: flex;
-      justify-content: space-between;
+      /* border: 1px solid red; */
+      /* justify-content: space-between; */
+      margin-top: 20px;
+      .logo{
+        color: white;
+        font-weight: 500;
+        background-color: #28be62;
+        width: 60px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 6px;
+      }
       .title {
         color: white;
       }
@@ -394,6 +407,7 @@ const Container = styled.div`
       display: flex;
       justify-content: space-around;
       align-items: center;
+      cursor: pointer;
       /* border: 1px solid red; */
       /* button {
         font-size: 40px;
@@ -460,7 +474,7 @@ const Container = styled.div`
               transition: all 0.2s ease-in-out;
             }
           }
-          .volume_box {
+          /* .volume_box {
             display: flex;
             width: 100%;
             .volume_icon {
@@ -477,7 +491,7 @@ const Container = styled.div`
               margin-left: 8px;
               width: 100%;
             }
-          }
+          } */
         }
         .sub_box {
           flex-grow: 3;
