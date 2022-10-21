@@ -436,9 +436,6 @@ const Video = (props) => {
 const Container = styled.div`
   position: relative;
   width: 100%;
-  @media screen and (min-width: 768px) {
-    width:600px;
-  }
 `;
 
 const VideoBackgroud = styled.div`
@@ -449,6 +446,7 @@ const VideoBackgroud = styled.div`
     width: 100%;
     margin: 0 auto;
     padding: 40px;
+    box-sizing: border-box;
     background-color: black;
   }
 `;
