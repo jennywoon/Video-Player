@@ -1,20 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-// import { useNavigate } from "react-router-dom";
 import * as Sentry from "@sentry/react";
 import ReactGA from "react-ga";
-
 import ReactPlayer from "react-player";
 import screenfull from "screenfull";
-
 import VideoControl from "./VideoControl.jsx";
-// import LoadingLoader from "../UI/LoadingLoader.jsx";
 import styled from "styled-components";
-// import questionMark from "../../assets/questionMark.svg";
-// import convertingImg from "../../assets/convertingImage.svg";
-// import GlobalModal from "../UI/GlobalModal";
-// import { boxShadow } from "../../styles/boxShadow.js";
-// import { MdFavorite } from "react-icons/md";
-// import { IoAlertCircle } from "react-icons/io5";
 
 function format(seconds) {
     if (isNaN(seconds)) {
@@ -324,7 +314,7 @@ const Video = (props) => {
                         <ReactPlayer
                             ref={videoRef}
                             // url={video}
-                            url={"https://chinatan.smilecast.co.kr/video/us-alliance/us-alliance_master_interview.mp4"}
+                            url={" https://chinatan.smilecast.co.kr/video/us-alliance/us-alliance_master_interview.mp4"}
                             playing={playing}
                             controls={false}
                             muted={muted}

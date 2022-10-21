@@ -1,18 +1,12 @@
 import React, { forwardRef, useState } from "react";
-// import { getCookie } from "../../shared/cookies";
-
-// import theme from "../../styles/theme";
 import styled from "styled-components";
-// import logo from "../../assets/logo.png";
 import PropTypes from "prop-types";
 import Slider from "@mui/material/Slider";
 import Popover from "@mui/material/Popover";
-
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { BiFullscreen } from "react-icons/bi";
 import { MdFastRewind, MdFastForward } from "react-icons/md";
-// import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import RotateRightIcon from '@mui/icons-material/RotateRight';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import PauseCircleIcon from '@mui/icons-material/PauseCircle';
