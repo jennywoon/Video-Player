@@ -15,9 +15,9 @@ function App() {
 export default App;
 
 const StContainer = styled.div`
-  width: 100%;
+  /* width: 100%; */
   @media screen and (max-width: 1024px) {
-    width:600px;
+    /* width:600px; */
   }
   
 `
