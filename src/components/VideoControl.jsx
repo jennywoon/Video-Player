@@ -3,10 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import Slider from "@mui/material/Slider";
 import Popover from "@mui/material/Popover";
-import { BsFillBookmarkFill } from "react-icons/bs";
-import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { BiFullscreen } from "react-icons/bi";
-import { MdFastRewind, MdFastForward } from "react-icons/md";
 import RotateRightIcon from '@mui/icons-material/RotateRight';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import PauseCircleIcon from '@mui/icons-material/PauseCircle';
@@ -21,11 +18,6 @@ const VideoControl = forwardRef(
             playing,
             onRewind,
             onForward,
-            muted,
-            // onMute,
-            // onVolumeChange,
-            // onVolumeSeekUp,
-            volume,
             playbackRate,
             onPlaybackRateChange,
             onToggleFullScreen,
@@ -35,15 +27,9 @@ const VideoControl = forwardRef(
             onSeekMouseUp,
             elapsedTime,
             totalDuration,
-            onChangeDisplayFormat,
-            scrapHandler,
-            isScrapped,
-            openModalHandler,
         },
         ref
     ) => {
-        // const token = getCookie("token");
-
         const [anchorEl, setAnchorEl] = useState(null);
         const [open, setOpen] = useState(false);
 
@@ -66,24 +52,11 @@ const VideoControl = forwardRef(
         return (
             <Container className="controls_wrapper">
                 <div ref={ref} className="control_box">
-                    {/* header */}
                     <div className="header">
                         <div className="logo">
                             VOD
                         </div>
-                        {/* <button
-                            style={{
-                                // color: isScrapped ? theme.colors.main : "#fff",
-                            }}
-                            className="scrap_btn"
-                            // onClick={token ? scrapHandler : openModalHandler}
-                        >
-                            <ScrapIcon />
-                            <div className="tooltip">좋았던 면접 영상을 저장하세요!</div>
-                        </button> */}
                     </div>
-
-                    {/* body */}
                     <div className="body">
                         <div onClick={onRewind}>
                             <RotateLeftIcon
@@ -107,14 +80,11 @@ const VideoControl = forwardRef(
                             />
                         </div>
                     </div>
-
-                    {/* footer */}
                     <div className="footer">
                         <div className="play_control_box">
                             <div className="slider">
                                 <div
                                     className="video_time"
-                                // onClick={onChangeDisplayFormat}
                                 >
                                     {elapsedTime}
                                 </div>
@@ -134,13 +104,6 @@ const VideoControl = forwardRef(
                                         "& .MuiSlider-thumb": {
                                             width: 22,
                                             height: 22,
-
-                                            "&:before": {
-                                                // boxShadow: "0 2px 12px 0 rgba(0,0,0,0.4)",
-                                            },
-                                            "&:hover, &.Mui-focusVisible": {
-                                                // boxShadow: `0px 0px 0px 8px rgb(0 0 0 / 16%)`,
-                                            },
                                             "&.Mui-active": {
                                                 width: 22,
                                                 height: 22,
@@ -150,32 +113,10 @@ const VideoControl = forwardRef(
                                             opacity: 0.8,
                                             color: "#eee"
                                         },
-                                        // "& .MuiSlider-valueLabel": {
-                                        //     lineHeight: 1.2,
-                                        //     fontSize: 12,
-                                        //     background: "unset",
-                                        //     padding: 0,
-                                        //     width: 32,
-                                        //     height: 32,
-                                        //     borderRadius: "50% 50% 50% 0",
-                                        //     backgroundColor: "#567FE8",
-                                        //     transformOrigin: "bottom left",
-                                        //     transform:
-                                        //         "translate(50%, -100%) rotate(-45deg) scale(0)",
-                                        //     "&:before": { display: "none" },
-                                        //     "&.MuiSlider-valueLabelOpen": {
-                                        //         transform:
-                                        //             "translate(50%, -100%) rotate(-45deg) scale(1)",
-                                        //     },
-                                        //     "& > *": {
-                                        //         transform: "rotate(45deg)",
-                                        //     },
-                                        // },
                                     }}
                                 />
                                 <div
                                     className="video_time"
-                                // onClick={onChangeDisplayFormat}
                                 >
                                     {totalDuration}
                                 </div>
@@ -206,9 +147,6 @@ const VideoControl = forwardRef(
                                                 <div
                                                     onClick={() => onPlaybackRateChange(rate)}
                                                     className="speed_btn"
-                                                // style={{
-                                                //     color: rate === playbackRate ? "#EA617A" : "",
-                                                // }}
                                                 >
                                                     <div>{rate}X</div>
                                                 </div>
@@ -222,104 +160,9 @@ const VideoControl = forwardRef(
                             </div>
                             <div className="functions_box">
                                 <div className="basic_box">
-                                    {/* <button>
-                                        {!playing ? (
-                                            <PlayIcon className="play_icon" onClick={onPlayPause} />
-                                        ) : (
-                                            <PauseIcon className="play_icon" onClick={onPlayPause} />
-                                        )}
-                                    </button> */}
-                                    {/* <div className="volume_box">
-                                        <button onClick={onMute}>
-                                            {muted ? (
-                                                <HiVolumeOff className="volume_icon" />
-                                            ) : (
-                                                <HiVolumeUp className="volume_icon" />
-                                            )}
-                                        </button>
-                                        <Slider
-                                            className="volume_slider"
-                                            min={0}
-                                            max={100}
-                                            value={
-                                                muted ? 0 : !muted && volume === 0 ? 50 : volume * 100
-                                            }
-                                            // onChange={onVolumeChange}
-                                            aria-label="Default"
-                                            onMouseDown={onSeekMouseDown}
-                                            // onChangeCommitted={onVolumeSeekUp}
-                                            valueLabelDisplay="off"
-                                            sx={{
-                                                color: "#567FE8",
-                                                height: 4,
-                                                "& .MuiSlider-thumb": {
-                                                    width: 8,
-                                                    height: 8,
-                                                    "&:before": {
-                                                        boxShadow: "0 2px 12px 0 rgba(0,0,0,0.4)",
-                                                    },
-                                                    "&:hover, &.Mui-focusVisible": {
-                                                        boxShadow: `0px 0px 0px 8px rgb(0 0 0 / 16%)`,
-                                                    },
-                                                    "&.Mui-active": {
-                                                        width: 20,
-                                                        height: 20,
-                                                    },
-                                                },
-                                                "& .MuiSlider-rail": {
-                                                    opacity: 0.28,
-                                                },
-                                            }}
-                                        />
-                                    </div> */}
-                                    {/* <button
-                                        className="video_time"
-                                        onClick={onChangeDisplayFormat}
-                                    >
-                                        {elapsedTime}/{totalDuration}
-                                    </button> */}
-                                </div>
-
-                                <div className="sub_box">
-                                    {/* <button onClick={handlePopover} className="speed">
-                                        <h1>{playbackRate}X</h1>
-                                    </button> */}
-                                    {/* <Popover
-                                        id={open ? "playbackrate-popover" : undefined}
-                                        open={open}
-                                        onClose={handleClose}
-                                        anchorEl={anchorEl}
-                                        anchorOrigin={{
-                                            vertical: "top",
-                                            horizontal: "left",
-                                        }}
-                                        transformOrigin={{
-                                            vertical: "bottom",
-                                            horizontal: "left",
-                                        }}
-                                    >
-                                        {[0.5, 1, 1.5, 2].map((rate) => (
-                                            <div
-                                                className="speed_box"
-                                                key={rate}
-                                                onClick={() => setOpen(false)}
-                                            >
-                                                <button
-                                                    onClick={() => onPlaybackRateChange(rate)}
-                                                    className="speed_btn"
-                                                    style={{
-                                                        color: rate === playbackRate ? "#EA617A" : "",
-                                                    }}
-                                                >
-                                                    <h1>{rate}</h1>
-                                                </button>
-                                            </div>
-                                        ))}
-                                    </Popover> */}
-                                    {/* <button className="fullscreen" onClick={onToggleFullScreen}>
-                                        <BiFullscreen />
-                                    </button> */}
-                                </div>
+                            </div>
+                            <div className="sub_box">
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -339,24 +182,16 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   z-index: 1;
-  /* border: 1px solid red; */
-  /* &:hover {
-    background: rgba(0, 0, 0, 0.3);
-  } */
   & .control_box {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    /* padding: 16px; */
     width: 100%;
     height: 100%;
-    /* border: 1px solid blue; */
     .header {
       width: 96%;
       display: flex;
-      /* border: 1px solid red; */
-      /* justify-content: space-between; */
       margin-top: 20px;
       .logo{
         color: white;
@@ -402,17 +237,6 @@ const Container = styled.div`
       justify-content: space-around;
       align-items: center;
       cursor: pointer;
-      /* border: 1px solid red; */
-      /* button {
-        font-size: 40px;
-        color: #777;
-        transform: scale(0.9);
-        &:hover {
-          color: white;
-          transform: scale(1);
-          transition: all 0.2s ease-in-out;
-        }
-      } */
     }
     .footer {
       width: 100%;
@@ -424,14 +248,12 @@ const Container = styled.div`
         width: 100%;
         display: flex;
         align-items: center;
-        /* border: 1px solid white; */
         .slider {
             display: flex;
             width: 100%;
             align-items: center;
             gap: 20px;
             margin: 0 20px;
-            /* border: 1px solid red; */
             .video_time {
             color: white;
             margin: 10px;
@@ -443,7 +265,6 @@ const Container = styled.div`
             .fullscreen {
             font-size: 22px;
             color: white;
-            /* border: 1px solid red; */
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -468,44 +289,11 @@ const Container = styled.div`
               transition: all 0.2s ease-in-out;
             }
           }
-          /* .volume_box {
-            display: flex;
-            width: 100%;
-            .volume_icon {
-              font-size: 20px;
-              color: #777;
-              transform: scale(0.9);
-              &:hover {
-                color: white;
-                transform: scale(1);
-                transition: all 0.2s ease-in-out;
-              }
-            }
-            .volume_slider {
-              margin-left: 8px;
-              width: 100%;
-            }
-          } */
         }
         .sub_box {
           flex-grow: 3;
           display: flex;
           justify-content: flex-end;
-          /* .speed_box {
-            display: flex;
-            flex-direction: column;
-            .speed_btn {
-              background: white;
-              width: 50px;
-              height: 50px;
-              &:hover {
-                color: red;
-              }
-              h1 {
-                color: white;
-              }
-            }
-          } */
         }
       }
     }
@@ -522,17 +310,6 @@ const StSpeedMap = styled.div`
     cursor: pointer;
     flex-grow: 3;
 `
-
-const ScrapIcon = styled(BsFillBookmarkFill)`
-  font-size: 16px;
-  margin: 0 2px;
-`;
-
-const PlayIcon = styled(BsFillPlayFill)``;
-
-const PauseIcon = styled(BsFillPauseFill)``;
-const RewindIcon = styled(MdFastRewind, MdFastForward, BsFillPlayFill)``;
-const ForwardIcon = styled(MdFastForward)``;
 
 VideoControl.propTypes = {
     onSeek: PropTypes.func,
